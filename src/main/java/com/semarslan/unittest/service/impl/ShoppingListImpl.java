@@ -19,21 +19,16 @@ import java.util.stream.Collectors;
 public class ShoppingListImpl implements ShoppingListService {
     
     private final ShoppingListRepository repository;
-
-    private final ShoppingListService service;
     
     @Override
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public List<ShoppingListResponse> getAllShoppingLists() {
+    public List<ShoppingListResponse> getAll() {
         return repository.findAll().stream().map(ShoppingListResponse::of).collect(Collectors.toList());
     }
-
 
     @Override
     @Transactional
     public ShoppingListResponse save(ShoppingListRequest request) {
-
-        
 
         final ShoppingList shoppingList = repository.save(new ShoppingList(request.getContent(), request.getCompleted()));
 

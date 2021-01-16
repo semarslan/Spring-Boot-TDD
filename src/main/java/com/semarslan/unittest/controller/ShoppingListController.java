@@ -22,8 +22,8 @@ public class ShoppingListController {
 
 
     @GetMapping
-    public ResponseEntity<List<ShoppingListResponse>> getAllShoppingLists(){
-        return ResponseEntity.ok(service.getAllShoppingLists());
+    public ResponseEntity<List<ShoppingListResponse>> getAll(){
+        return ResponseEntity.ok(service.getAll());
     }
 
     @PostMapping
